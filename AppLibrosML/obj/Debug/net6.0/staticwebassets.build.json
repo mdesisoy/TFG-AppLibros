@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WiurfSpBKGskDDsNYQ1dEsCrRtRKvJgHv1QGllczMsw=",
+  "Hash": "CQl1t0NyGsNx3QBa9OBmqVQcp6LB+iDmIjIn6X6bn/4=",
   "Source": "AppLibrosML",
   "BasePath": "_content/AppLibrosML",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\Usuario\\Desktop\\TFG\\AppLibrosML\\wwwroot\\css\\styles.css",
+      "SourceId": "AppLibrosML",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Usuario\\Desktop\\TFG\\AppLibrosML\\wwwroot\\",
+      "BasePath": "_content/AppLibrosML",
+      "RelativePath": "css/styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\styles.css"
     },
     {
       "Identity": "C:\\Users\\Usuario\\Desktop\\TFG\\AppLibrosML\\wwwroot\\favicon.ico",
