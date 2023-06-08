@@ -41,7 +41,7 @@ namespace AppLibrosML.Controllers
                 contexto.Usuarios.Add(usuario);
                 contexto.Database.EnsureCreated(); //mapeado en la base de datos, esta instruccion securiza
                 contexto.SaveChanges();
-                return RedirectToAction(nameof(Create));
+                return RedirectToAction("Index", "Libro");
             }
             catch
             {
