@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSession(); // Agregar esta línea para configurar la sesión
 
 //Para la conexion con la base de datos
 IConfiguration configuration = new ConfigurationBuilder()
@@ -30,6 +31,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession(); // Agregar esta línea para usar la sesión
 
 app.MapControllerRoute(
     name: "default",

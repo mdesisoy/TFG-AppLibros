@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using AppLibrosML.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace AppLibrosML.Controllers
 {
@@ -27,6 +28,12 @@ namespace AppLibrosML.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public ActionResult Logoff()
+        {
+            HttpContext.Session.Remove("usuario");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
