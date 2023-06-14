@@ -1,4 +1,5 @@
-﻿using AppLibrosML.Models;
+﻿using System.Security.Claims;
+using AppLibrosML.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,82 +14,12 @@ namespace AppLibrosML.Controllers
             this.contexto = contexto;
         }
 
-        // GET: UsuarioController
-        public ActionResult Index()
+        public ActionResult UsuarioPerfil()
         {
+            string correoUsuario = HttpContext.Session.GetString("usuario");
+            ViewBag.CorreoUsuario = correoUsuario;
+
             return View();
-        }
-
-        // GET: UsuarioController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: UsuarioController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: UsuarioController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(UsuarioModelo usuario)
-        {
-            try
-            {
-                contexto.Usuarios.Add(usuario);
-                contexto.Database.EnsureCreated(); //mapeado en la base de datos, esta instruccion securiza
-                contexto.SaveChanges();
-                return RedirectToAction("Index", "Libro");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: UsuarioController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: UsuarioController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: UsuarioController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: UsuarioController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
