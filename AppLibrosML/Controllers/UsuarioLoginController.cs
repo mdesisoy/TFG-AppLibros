@@ -3,9 +3,10 @@ using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Text;
 using System.Security.Cryptography;
-
 using AppLibrosML.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace AppLibrosML.Controllers
 {
@@ -102,7 +103,7 @@ namespace AppLibrosML.Controllers
             {
                 //Session["usuario"] = usuario;
                 HttpContext.Session.SetString("usuario", usuario.CorreoElectronico);
-                return RedirectToAction("UsuarioPerfil", "Usuario");
+                return RedirectToAction("UsuarioPerfil", "UsuarioLogin");
             }
             else
             {
@@ -128,6 +129,14 @@ namespace AppLibrosML.Controllers
             }
 
             return Sb.ToString();
+        }
+
+        public ActionResult UsuarioPerfil()
+        {
+            string correoUsuario = HttpContext.Session.GetString("usuario");
+            ViewBag.CorreoUsuario = correoUsuario;
+
+            return View();
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using AppLibrosML.Models;
+﻿using System.Security.Claims;
+using AppLibrosML.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AppLibrosML.Controllers
 {
@@ -27,5 +29,6 @@ namespace AppLibrosML.Controllers
             LibroModelo libro = contexto.Libros.FirstOrDefault(v => v.ID == id);
             return View(libro);
         }
+
     }
 }
