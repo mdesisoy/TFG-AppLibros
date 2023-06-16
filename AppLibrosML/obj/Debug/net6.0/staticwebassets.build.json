@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CQl1t0NyGsNx3QBa9OBmqVQcp6LB+iDmIjIn6X6bn/4=",
+  "Hash": "98OYV6ekR8q3DH653frf197ukCdNNmSOrsW7Ly51ppU=",
   "Source": "AppLibrosML",
   "BasePath": "_content/AppLibrosML",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Usuario\\Desktop\\TFG\\AppLibrosML\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\AppLibrosML.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Usuario\\Desktop\\TFG\\AppLibrosML\\wwwroot\\css\\create.css",
+      "SourceId": "AppLibrosML",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Usuario\\Desktop\\TFG\\AppLibrosML\\wwwroot\\",
+      "BasePath": "_content/AppLibrosML",
+      "RelativePath": "css/create.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\create.css"
     },
     {
       "Identity": "C:\\Users\\Usuario\\Desktop\\TFG\\AppLibrosML\\wwwroot\\css\\site.css",

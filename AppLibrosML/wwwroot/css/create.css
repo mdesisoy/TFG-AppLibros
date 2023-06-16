@@ -1,0 +1,25 @@
+﻿.star-button {
+    appearance: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    position: relative;
+}
+
+.star-button:before {
+    content: "\2606"; /* Estrella vacía caracter sacado de unicode */
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 24px;
+    color: #ffc107; /* Cambia el color a amarillo */
+}
+
+.star-button.checked:before {
+    content: "\2605"; /* Estrella llena */
+}

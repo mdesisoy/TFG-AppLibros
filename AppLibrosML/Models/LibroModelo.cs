@@ -1,4 +1,6 @@
-﻿namespace AppLibrosML.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AppLibrosML.Models
 {
     public class LibroModelo
     {
@@ -7,7 +9,12 @@
         public string Autor { get; set; }
         public string Editorial { get; set; }
         public string Genero { get; set; }
-        public string Descripcion { get; set; }
-        public string Portada { get; set; }
+        public string Estado { get; set; }
+        public string Comentarios { get; set; }
+        public int? Valoracion { get; set; }
+
+
+        //Para sacar listado relacionado
+        public ICollection<LibrosUsuarioModelo> LibrosUsuarios { get; set; }
     }
 }

@@ -11,6 +11,6 @@ namespace AppLibrosML.Models
         }
         public DbSet<UsuarioModelo> Usuarios { get; set; } //tabla para los usuarios
         public DbSet<LibroModelo> Libros { get; set; } //tabla para los libros
-
+        public DbSet<LibrosUsuarioModelo> LibrosUsuario { get; set; } //tabla intermedia para libros de un usuario
     }
 }

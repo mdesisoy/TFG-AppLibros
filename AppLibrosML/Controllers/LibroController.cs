@@ -15,19 +15,37 @@ namespace AppLibrosML.Controllers
             this.contexto = contexto;
         }
 
-        //CREO EL LISTADO DE LIBROS QUE SE VA A VER
+        //PARA QUE EL USUARIO CREE EL LIBRO
+        // GET: MarcaController/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: MarcaController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(LibroModelo libro)
+        {
+            try
+            {
+                contexto.Libros.Add(libro);
+                contexto.Database.EnsureCreated();
+                contexto.SaveChanges();
+                return RedirectToAction("UsuarioPerfil", "UsuarioLogin");
+            }
+            catch
+            {
+                return View("Create");
+            }
+        }
+
+        //CREO EL LISTADO DE LIBROS QUE SE VA A VER CAMBIAAAAAAAAAAAAR
         // GET: LibroController
         public ActionResult Index()
         {
             var listaLibros = contexto.Libros.ToList();
             return View(listaLibros);
-        }
-
-        // GET: LibroController/Details/5
-        public ActionResult Details(int id)
-        {
-            LibroModelo libro = contexto.Libros.FirstOrDefault(v => v.ID == id);
-            return View(libro);
         }
 
     }

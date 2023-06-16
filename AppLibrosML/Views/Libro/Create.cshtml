@@ -1,0 +1,108 @@
+﻿@model AppLibrosML.Models.LibroModelo
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>LibroModelo</h4>
+<hr />
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/create.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Titulo" class="control-label"></label>
+                    <input asp-for="Titulo" class="form-control" />
+                    <span asp-validation-for="Titulo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Autor" class="control-label"></label>
+                    <input asp-for="Autor" class="form-control" />
+                    <span asp-validation-for="Autor" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Editorial" class="control-label"></label>
+                    <input asp-for="Editorial" class="form-control" />
+                    <span asp-validation-for="Editorial" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Genero" class="control-label"></label>
+                    <select asp-for="Genero" asp-items='new SelectList(new[] {
+                        "Novela de aventuras",
+                        "Novela de ciencia ficción",
+                        "Novela policiaca",
+                        "Novela de terror",
+                        "Novela romántica",
+                        "Novela fantástica",
+                        "Teatro",
+                        "Poesía",
+                        "Cuento infantil",
+                        "Cómic"
+                    })' class="form-select" aria-label="Default select example"></select>
+                    <span asp-validation-for="Genero" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Estado" class="control-label"></label>
+                    <select asp-for="Estado" asp-items='new SelectList(new[] {
+                        "Quiero leer",
+                        "Estoy leyendo",
+                        "Leído"
+                    })' class="form-select" aria-label="Default select example"></select>
+                     <span asp-validation-for="Estado" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Comentarios" class="control-label"></label>
+                    <textarea asp-for="Comentarios" class="form-control"></textarea>
+                    <span asp-validation-for="Comentarios" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Valoracion" class="control-label"></label>
+                    <div id="valoracion">
+                        <button type="button" class="star-button" data-rating-value="1"></button>
+                        <button type="button" class="star-button" data-rating-value="2"></button>
+                        <button type="button" class="star-button" data-rating-value="3"></button>
+                        <button type="button" class="star-button" data-rating-value="4"></button>
+                        <button type="button" class="star-button" data-rating-value="5"></button>
+                    </div>
+                    <input type="hidden" asp-for="Valoracion" />
+                    <span asp-validation-for="Valoracion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-warning" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</body>
+
+
+<script>
+    $(document).ready(function () {
+        $('.star-button').click(function () {
+            var ratingValue = $(this).data('rating-value');
+                        
+            $(this).addClass('checked').prevAll().addClass('checked'); //Botón seleccionado como "checked"
+            $(this).nextAll().removeClass('checked');
+
+            $('input[name="Valoracion"]').val(ratingValue);
+        });
+    });
+</script>
+
+
+
+
+
