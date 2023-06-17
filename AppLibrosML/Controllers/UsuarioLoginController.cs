@@ -102,6 +102,7 @@ namespace AppLibrosML.Controllers
             if (usuario.ID != 0)
             {
                 //Session["usuario"] = usuario;
+                HttpContext.Session.SetInt32("UsuarioId", usuario.ID); //guardo id para usarlo en el LibroController
                 HttpContext.Session.SetString("usuario", usuario.CorreoElectronico);
                 return RedirectToAction("UsuarioPerfil", "UsuarioLogin");
             }
