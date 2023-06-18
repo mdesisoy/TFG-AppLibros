@@ -20,6 +20,12 @@ namespace AppLibrosML.Controllers
             this.contexto = contexto;
         }
 
+        // Método para obtener el ID del usuario actual
+        private int GetUsuarioId()
+        {
+            return (int)HttpContext.Session.GetInt32("UsuarioId");
+        }
+
         //GET:Acceso
         public ActionResult Login()
         {
@@ -137,7 +143,33 @@ namespace AppLibrosML.Controllers
             string correoUsuario = HttpContext.Session.GetString("usuario");
             ViewBag.CorreoUsuario = correoUsuario;
 
-            return View();
+            List<LibroModelo> librosLeidos = ObtenerLibrosLeidos();
+
+            return View(librosLeidos);
+        }
+
+
+        // Obtener libros leídos del usuario
+        public List<LibroModelo> ObtenerLibrosLeidos()
+        {
+            int usuarioId = GetUsuarioId();
+
+            List<LibroModelo> librosLeidos = contexto.LibrosUsuario
+                .Where(lu => lu.usuarioID == usuarioId && lu.libro.Estado == "Leído")
+                .Select(lu => new LibroModelo
+                {
+                    ID = lu.libro.ID,
+                    Titulo = lu.libro.Titulo,
+                    Autor = lu.libro.Autor,
+                    Editorial = lu.libro.Editorial ?? string.Empty,
+                    Genero = lu.libro.Genero,
+                    Estado = lu.libro.Estado,
+                    Comentarios = lu.libro.Comentarios ?? string.Empty,
+                    Valoracion = lu.libro.Valoracion
+                })
+                .ToList();
+
+            return librosLeidos;
         }
     }
 }

@@ -149,47 +149,99 @@ namespace AppLibrosML.Controllers
             return RedirectToAction("Listado");
         }
 
-        //GET: Libro/Delete
-        public ActionResult Delete(int id)
+        // GET: Libro/Buscador
+        public ActionResult Buscador(string searchTerm)
         {
-            var libro = contexto.Libros.FirstOrDefault(l => l.ID == id);
+            int usuarioId = GetUsuarioId();
 
-            if (libro == null)
+            List<LibroModelo> librosUsuario;
+
+            if (string.IsNullOrWhiteSpace(searchTerm))
             {
-                return NotFound();
+                librosUsuario = contexto.LibrosUsuario
+                    .Where(lu => lu.usuarioID == usuarioId)
+                    .Select(lu => new LibroModelo
+                    {
+                        ID = lu.libro.ID,
+                        Titulo = lu.libro.Titulo,
+                        Autor = lu.libro.Autor,
+                        Editorial = lu.libro.Editorial ?? string.Empty,
+                        Genero = lu.libro.Genero,
+                        Estado = lu.libro.Estado,
+                        Comentarios = lu.libro.Comentarios ?? string.Empty,
+                        Valoracion = lu.libro.Valoracion
+                    })
+                    .ToList();
+            }
+            else
+            {
+                librosUsuario = contexto.LibrosUsuario
+                    .Where(lu => lu.usuarioID == usuarioId && (lu.libro.Titulo.Contains(searchTerm) || lu.libro.Autor.Contains(searchTerm) 
+                    || lu.libro.Editorial.Contains(searchTerm) || lu.libro.Genero.Contains(searchTerm) || lu.libro.Estado.Contains(searchTerm)))
+                    .Select(lu => new LibroModelo
+                    {
+                        ID = lu.libro.ID,
+                        Titulo = lu.libro.Titulo,
+                        Autor = lu.libro.Autor,
+                        Editorial = lu.libro.Editorial ?? string.Empty,
+                        Genero = lu.libro.Genero,
+                        Estado = lu.libro.Estado,
+                        Comentarios = lu.libro.Comentarios ?? string.Empty,
+                        Valoracion = lu.libro.Valoracion
+                    })
+                    .ToList();
             }
 
-            LibroModelo libroModelo = new LibroModelo
-            {
-                ID = libro.ID,
-                Titulo = libro.Titulo,
-                Autor = libro.Autor,
-                Editorial = libro.Editorial ?? string.Empty,
-                Genero = libro.Genero,
-                Estado = libro.Estado,
-                Comentarios = libro.Comentarios ?? string.Empty,
-                Valoracion = libro.Valoracion
-            };
-
-            return View(libroModelo);
+            return View("Listado", librosUsuario);
         }
 
-        //POST: Libro/Delete
-        [HttpPost]
-        public ActionResult DeleteConfirmed(int id) //PARA CONFIRMAR EN LA VISTA QUE QUIERES BORRAR
-        {
-            var libro = contexto.Libros.FirstOrDefault(l => l.ID == id);
 
-            if (libro == null)
-            {
-                return NotFound();
-            }
 
-            contexto.Libros.Remove(libro); //elimina de la base de datos
-            contexto.SaveChanges();
+        //NO VA BIEN EL DELETE
+        ////GET: Libro/Delete
+        //public ActionResult Delete(int id)
+        //{
+        //    var libro = contexto.Libros.FirstOrDefault(l => l.ID == id);
 
-            return RedirectToAction("Listado");
-        }
+        //    if (libro == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    LibroModelo libroModelo = new LibroModelo
+        //    {
+        //        ID = libro.ID,
+        //        Titulo = libro.Titulo,
+        //        Autor = libro.Autor,
+        //        Editorial = libro.Editorial ?? string.Empty,
+        //        Genero = libro.Genero,
+        //        Estado = libro.Estado,
+        //        Comentarios = libro.Comentarios ?? string.Empty,
+        //        Valoracion = libro.Valoracion
+        //    };
+
+        //    return View(libroModelo);
+        //}
+
+        ////POST: Libro/Delete
+        //[HttpPost]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    var libro = contexto.Libros.FirstOrDefault(l => l.ID == id);
+
+        //    if (libro == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var librosUsuario = contexto.LibrosUsuario.Where(lu => lu.libroID == id).ToList();
+        //    contexto.LibrosUsuario.RemoveRange(librosUsuario);
+
+        //    contexto.Libros.Remove(libro);
+        //    contexto.SaveChanges();
+
+        //    return RedirectToAction("Listado");
+        //}
 
     }
 }
