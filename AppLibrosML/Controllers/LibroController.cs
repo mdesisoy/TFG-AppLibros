@@ -69,16 +69,9 @@ namespace AppLibrosML.Controllers
             {
                 return View("Create");
             }
-        }
+        }     
 
-        //CREO EL LISTADO DE LIBROS QUE SE VA A VER CAMBIAAAAAAAAAAAAR
-        // GET: LibroController
-        //public ActionResult Index()
-        //{
-        //    var listaLibros = contexto.Libros.ToList();
-        //    return View(listaLibros);
-        //}
-
+        //Sacar listado de libros según el usuario
         public ActionResult Listado()
         {
             int usuarioId = GetUsuarioId();
@@ -101,7 +94,102 @@ namespace AppLibrosML.Controllers
             return View(librosUsuario);
         }
 
+        // GET: Libro/Edit/5
+        public ActionResult Edit(int id)
+        {
+            var libro = contexto.Libros.FirstOrDefault(l => l.ID == id);
 
+            if (libro == null)
+            {
+                return NotFound();
+            }
+
+            LibroModelo libroModelo = new LibroModelo //Este modelo es el que se mostrará en el edit y sobre el que se edita
+            {
+                ID = libro.ID,
+                Titulo = libro.Titulo,
+                Autor = libro.Autor,
+                Editorial = libro.Editorial ?? string.Empty,
+                Genero = libro.Genero,
+                Estado = libro.Estado,
+                Comentarios = libro.Comentarios ?? string.Empty,
+                Valoracion = libro.Valoracion
+            };
+
+            return View(libroModelo);
+        }
+
+        // POST: Libro/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, LibroModelo libroActualizado)
+        {
+            if (id != libroActualizado.ID)
+            {
+                return NotFound();
+            }
+
+            var libro = contexto.Libros.FirstOrDefault(l => l.ID == id);
+
+            if (libro == null)
+            {
+                return NotFound();
+            }
+
+            libro.Titulo = libroActualizado.Titulo;
+            libro.Autor = libroActualizado.Autor;
+            libro.Editorial = libroActualizado.Editorial ?? string.Empty;
+            libro.Genero = libroActualizado.Genero;
+            libro.Estado = libroActualizado.Estado;
+            libro.Comentarios = libroActualizado.Comentarios ?? string.Empty;
+            libro.Valoracion = libroActualizado.Valoracion;
+
+            contexto.SaveChanges();
+
+            return RedirectToAction("Listado");
+        }
+
+        //GET: Libro/Delete
+        public ActionResult Delete(int id)
+        {
+            var libro = contexto.Libros.FirstOrDefault(l => l.ID == id);
+
+            if (libro == null)
+            {
+                return NotFound();
+            }
+
+            LibroModelo libroModelo = new LibroModelo
+            {
+                ID = libro.ID,
+                Titulo = libro.Titulo,
+                Autor = libro.Autor,
+                Editorial = libro.Editorial ?? string.Empty,
+                Genero = libro.Genero,
+                Estado = libro.Estado,
+                Comentarios = libro.Comentarios ?? string.Empty,
+                Valoracion = libro.Valoracion
+            };
+
+            return View(libroModelo);
+        }
+
+        //POST: Libro/Delete
+        [HttpPost]
+        public ActionResult DeleteConfirmed(int id) //PARA CONFIRMAR EN LA VISTA QUE QUIERES BORRAR
+        {
+            var libro = contexto.Libros.FirstOrDefault(l => l.ID == id);
+
+            if (libro == null)
+            {
+                return NotFound();
+            }
+
+            contexto.Libros.Remove(libro); //elimina de la base de datos
+            contexto.SaveChanges();
+
+            return RedirectToAction("Listado");
+        }
 
     }
 }
