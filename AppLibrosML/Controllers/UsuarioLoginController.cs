@@ -159,8 +159,8 @@ namespace AppLibrosML.Controllers
                 .Select(lu => new LibroModelo
                 {
                     ID = lu.libro.ID,
-                    Titulo = lu.libro.Titulo,
-                    Autor = lu.libro.Autor,
+                    Titulo = lu.libro.Titulo ?? string.Empty,
+                    Autor = lu.libro.Autor ?? string.Empty,
                     Editorial = lu.libro.Editorial ?? string.Empty,
                     Genero = lu.libro.Genero,
                     Estado = lu.libro.Estado,

@@ -12,53 +12,52 @@
                     <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
                         <img src="https://i.pinimg.com/564x/64/0a/91/640a91892bbe2a38a7e99cc91e1c01e5.jpg" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
                     </div>
-                    <div class="ms-3" style="margin-top: 130px;">
-                        <h5>@ViewBag.CorreoUsuario</h5>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <hr />
-    <hr />
-    <hr />
+
+    <br />
 
     <!-- Formulario de búsqueda -->
     <div class="row justify-content-center align-items-center mt-3">
         <div class="col text-center">
             <form action="@Url.Action("Buscador", "Libro")" method="get" class="form-inline">
                 <div class="form-group mx-sm-3 mb-2">
-                    <input type="text" name="searchTerm" class="form-control" placeholder="Buscar...">
+                    <div class="input-group">
+                        <input type="text" name="searchTerm" class="form-control" placeholder="Buscar...">
+                        <button type="submit" class="btn btn-warning">Buscar</button>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary mb-2">Buscar</button>
             </form>
         </div>
     </div>
 
+
     <!-- Resultados de búsqueda -->
-    <table class="table">
+    <table class="table table-warning table-striped">
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Titulo)
+                    @Html.DisplayName("Titulo del libro")
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Autor)
+                    @Html.DisplayName("Autor del libro")
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Editorial)
+                    @Html.DisplayName("Editorial")
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Genero)
+                    @Html.DisplayName("Genero del libro")
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Estado)
+                    @Html.DisplayName("Estado")
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Comentarios)
+                    @Html.DisplayName("Tus comentarios")
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Valoracion)
+                    @Html.DisplayName("Puntuación del libro")
                 </th>
                 <th></th>
             </tr>
@@ -89,8 +88,9 @@
                         @Html.DisplayFor(modelItem => item.Valoracion)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+                        <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Edit", new { id = item.ID })'">Editar</button>
                     </td>
+
                 </tr>
             }
         </tbody>

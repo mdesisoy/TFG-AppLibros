@@ -42,6 +42,11 @@ namespace AppLibrosML.Controllers
                 {
                     try
                     {
+                        libro.Titulo = libro.Titulo ?? string.Empty;
+                        libro.Autor = libro.Autor ?? string.Empty;
+                        libro.Editorial = libro.Editorial ?? string.Empty;
+                        libro.Comentarios = libro.Comentarios ?? string.Empty;
+
                         contexto.Libros.Add(libro);
                         contexto.SaveChanges();
 
@@ -81,8 +86,8 @@ namespace AppLibrosML.Controllers
                 .Select(lu => new LibroModelo
                 {
                     ID = lu.libro.ID,
-                    Titulo = lu.libro.Titulo,
-                    Autor = lu.libro.Autor,
+                    Titulo = lu.libro.Titulo ?? string.Empty,
+                    Autor = lu.libro.Autor ?? string.Empty,
                     Editorial = lu.libro.Editorial ?? string.Empty,
                     Genero = lu.libro.Genero,
                     Estado = lu.libro.Estado,
@@ -107,8 +112,8 @@ namespace AppLibrosML.Controllers
             LibroModelo libroModelo = new LibroModelo //Este modelo es el que se mostrará en el edit y sobre el que se edita
             {
                 ID = libro.ID,
-                Titulo = libro.Titulo,
-                Autor = libro.Autor,
+                Titulo = libro.Titulo ?? string.Empty,
+                Autor = libro.Autor ?? string.Empty,
                 Editorial = libro.Editorial ?? string.Empty,
                 Genero = libro.Genero,
                 Estado = libro.Estado,
@@ -136,8 +141,8 @@ namespace AppLibrosML.Controllers
                 return NotFound();
             }
 
-            libro.Titulo = libroActualizado.Titulo;
-            libro.Autor = libroActualizado.Autor;
+            libro.Titulo = libroActualizado.Titulo ?? string.Empty;
+            libro.Autor = libroActualizado.Autor ?? string.Empty;
             libro.Editorial = libroActualizado.Editorial ?? string.Empty;
             libro.Genero = libroActualizado.Genero;
             libro.Estado = libroActualizado.Estado;
@@ -163,8 +168,8 @@ namespace AppLibrosML.Controllers
                     .Select(lu => new LibroModelo
                     {
                         ID = lu.libro.ID,
-                        Titulo = lu.libro.Titulo,
-                        Autor = lu.libro.Autor,
+                        Titulo = lu.libro.Titulo ?? string.Empty,
+                        Autor = lu.libro.Autor ?? string.Empty,
                         Editorial = lu.libro.Editorial ?? string.Empty,
                         Genero = lu.libro.Genero,
                         Estado = lu.libro.Estado,
@@ -181,8 +186,8 @@ namespace AppLibrosML.Controllers
                     .Select(lu => new LibroModelo
                     {
                         ID = lu.libro.ID,
-                        Titulo = lu.libro.Titulo,
-                        Autor = lu.libro.Autor,
+                        Titulo = lu.libro.Titulo ?? string.Empty,
+                        Autor = lu.libro.Autor ?? string.Empty,
                         Editorial = lu.libro.Editorial ?? string.Empty,
                         Genero = lu.libro.Genero,
                         Estado = lu.libro.Estado,

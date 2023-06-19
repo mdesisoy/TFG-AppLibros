@@ -9,7 +9,7 @@
             <div class="col">
                 <div class="rounded-top text-white d-flex flex-row bg-warning" style="height:200px;">
                     <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                        <img src="https://i.pinimg.com/564x/64/0a/91/640a91892bbe2a38a7e99cc91e1c01e5.jpg" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
+                        <img src="https://i.pinimg.com/564x/64/0a/91/640a91892bbe2a38a7e99cc91e1c01e5.jpg" alt="Perfil" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
                     </div>
                     <div class="ms-3" style="margin-top: 130px;">
                         <a asp-area="" asp-controller="Home" asp-action="Logoff" class="btn btn-outline-dark">Cerrar sesión</a>
@@ -18,25 +18,27 @@
                         }
                         <h5>@correoUsuario</h5>
                     </div>
-                    <div class="col">
-                        <div class="rounded-top text-white d-flex flex-column bg-warning" style="height:200px;">
-                            <div class="ms-4 mt-5 d-flex flex-column">
-                                <h4 class="text-center">Libros leídos</h4>
-                                <h1 class="display-4 text-center">@Model.Count</h1>
+                    <div class="col d-flex align-items-center justify-content-center">
+                        <div class="position-relative d-inline-block" style="height: 180px; width: 180px;">
+                            <div class="position-absolute top-0 start-0 bottom-0 end-0 rounded-circle border border-4 border-white d-flex flex-column justify-content-center align-items-center">
+                                <h4 class="text-center" style="font-size: 18px;">Libros leídos</h4>
+                                <h1 class="display-4 text-center" style="font-size: 45px;">@Model.Count</h1>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row justify-content-center align-items-center mt-5">
-            <div class="col text-center">
-                <a href="@Url.Action("Create", "Libro")" class="btn btn-warning btn-lg">Crear nueva entrada</a>
-            </div>
-        </div>
-        <div class="row justify-content-center align-items-center mt-3">
-            <div class="col text-center">
-                <a href="@Url.Action("Listado", "Libro")" class="btn btn-warning btn-lg">Ver mis Libros</a>
+            <div>
+                <div class="row justify-content-center align-items-center mt-5">
+                    <div class="col text-center">
+                        <a href="@Url.Action("Create", "Libro")" class="btn btn-warning btn-lg">Crear nueva entrada</a>
+                    </div>
+                </div>
+                <div class="row justify-content-center align-items-center mt-3">
+                    <div class="col text-center">
+                        <a href="@Url.Action("Listado", "Libro")" class="btn btn-warning btn-lg">Ver mis Libros</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
