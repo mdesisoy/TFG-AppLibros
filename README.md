@@ -26,7 +26,7 @@ Por último, en el perfil encontrarás el botón de cerrar sesión y además un 
 
 
 
-## Contributing
+## Contribuciones
 
 ¡Las contribuciones son siempre bienvenidas!
 
