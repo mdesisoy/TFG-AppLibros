@@ -76,7 +76,7 @@ namespace AppLibrosML.Controllers
                     catch
                     {
                         transaction.Rollback();
-                        throw; // Puedes manejar o personalizar la excepción aquí si es necesario
+                        throw; 
                     }
                 }
             }
