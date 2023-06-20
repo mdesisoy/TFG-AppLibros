@@ -9,7 +9,7 @@ Es una aplicación ASP.NET core MVC la cual se ha implementado utilizando Visual
 Para ejecutar la aplicación, sigue los siguientes pasos:
 1. Clona el repositorio de Github en tu ordenador usando `https://github.com/mdesisoy/TFG-AppLibros.git`.
 2. Ejecuta Visual Studio.
-3. Clica en Archivo > Abrir > Proyecto o solución y elige la solución del proyecto.
+3. Clica en `Archivo > Abrir > Proyecto o solución` y elige la solución del proyecto.
 
 **NOTA**: Puedes ejecutar SQL Server y controlar los datos que se introducen en la Base de Datos.
 
@@ -17,9 +17,9 @@ Para ejecutar la aplicación, sigue los siguientes pasos:
 
 En **Book Planner** podrás registrarte para luego iniciar sesión con tu usuario ya guardado en la base de datos.
 
-Una vez en tu perfil podrás crear una nueva entrada, lo que significa crear un nuevo libro que quieras añadir a tu biblioteca, o ver tu listado de libros y editar cualquiera ya guardado desde ahí.
+Una vez en tu perfil podrás crear una nueva entrada, lo que significa crear un nuevo libro que quieras añadir a tu biblioteca, o ver tu listado de libros y editar cualquiera ya guardado desde ahí o buscar un libro que hayas añadido.
 
-Por supuesto, en el perfil encontrarás el botón de cerrar sesión y además un contador con los libros que has marcado como leídos.
+Por último, en el perfil encontrarás el botón de cerrar sesión y además un contador con los libros que has marcado como leídos.
 
 ![Home Book Planner](Images/Home.png)
 
