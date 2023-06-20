@@ -42,7 +42,17 @@ namespace AppLibrosML.Controllers
                 {
                     try
                     {
-                        libro.Titulo = libro.Titulo ?? string.Empty;
+                        if (string.IsNullOrEmpty(libro.Titulo))
+                        {
+                            ModelState.AddModelError("Titulo", "El campo título es obligatorio.");
+
+                            // Limpio errores de validación en los campos restantes
+                            ModelState.Remove("Autor");
+                            ModelState.Remove("Editorial");
+                            ModelState.Remove("Comentarios");
+
+                            return View(libro);
+                        }
                         libro.Autor = libro.Autor ?? string.Empty;
                         libro.Editorial = libro.Editorial ?? string.Empty;
                         libro.Comentarios = libro.Comentarios ?? string.Empty;
@@ -141,7 +151,17 @@ namespace AppLibrosML.Controllers
                 return NotFound();
             }
 
-            libro.Titulo = libroActualizado.Titulo ?? string.Empty;
+            if (string.IsNullOrEmpty(libroActualizado.Titulo))
+            {
+                ModelState.AddModelError("Titulo", "El campo título es obligatorio.");
+
+                // Limpio errores de validación en los demás campos
+                ModelState.Remove("Autor");
+                ModelState.Remove("Editorial");
+                ModelState.Remove("Comentarios");
+
+                return View(libroActualizado);
+            }
             libro.Autor = libroActualizado.Autor ?? string.Empty;
             libro.Editorial = libroActualizado.Editorial ?? string.Empty;
             libro.Genero = libroActualizado.Genero;
